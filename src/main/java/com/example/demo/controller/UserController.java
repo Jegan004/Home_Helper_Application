@@ -62,4 +62,48 @@ public class UserController {
 	public String modifybyid(@PathVariable int id,@RequestBody UserModel ss) {
 		return user.updateinfobyid(id, ss);
 	}
+	
+	@GetMapping("sort/{uname}")
+	public List<UserModel> getsortinfo(@PathVariable String uname)
+	{
+		return user.sortinfo(uname);
+	}
+	
+	@GetMapping("paging/{pageno}/{pagesize}")
+	public List<UserModel> showpageinfo(@PathVariable int pageno, @PathVariable int pagesize )
+	{
+		return user.getbypage(pageno, pagesize);
+	}
+	
+	@PostMapping("addservice")
+	public UserModel addser(@RequestBody UserModel ss) {
+		return user.saveuserserdetails(ss);
+	}
+	
+	@GetMapping("showservice")
+	public List<UserModel> showser(){
+		return user.showuserserinfo();
+	}
+	
+	@GetMapping("wskills/{wskills}")
+	public List<UserModel> showinfo1(@PathVariable String wskills){
+		return user.display(wskills);
+	}
+	
+	@DeleteMapping("deletequery/{uid}")
+	public String deluserdetails(@PathVariable int uid)
+	{
+		return user.deluser(uid)+"deleted";
+	}
+	
+	@PutMapping("updatequery/{newid}/{oldid}")
+	public String updateuserdetails(@PathVariable int newid,@PathVariable int oldid) {
+		return user.updateuser(newid, oldid) +"Updated";
+	}
+	
+	@GetMapping("uid/{uid}/uname/{uname}")
+	public List<UserModel> showinfo2(@PathVariable int uid,@PathVariable String uname)
+	{
+		return user.disp(uid,uname);
+	}
 }

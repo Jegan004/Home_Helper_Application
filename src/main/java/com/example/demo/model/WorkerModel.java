@@ -5,16 +5,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Worker_Table")
+@Table(name="worker_table")
 public class WorkerModel {
 	
-	@Id
+	
 	private int wid;
 	private String wname;
 	private String waddress;
 	private long wnumber;
 	private String wexp;
 	private String wgender;
+	@Id
 	private String wskills;
 	private String client;
 	private String status;
